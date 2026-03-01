@@ -244,6 +244,210 @@
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
+        /* ===== SECTIONS DEFI ===== */
+        .defi-separator {
+            text-align: center;
+            margin: 80px 0 50px;
+            padding-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .defi-separator h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 6vw, 2.5rem);
+            background: linear-gradient(135deg, var(--kalmydas-green), var(--kalmydas-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .defi-separator p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .defi-section {
+            margin-bottom: 60px;
+        }
+
+        .defi-section h3 {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 700;
+            color: var(--kalmydas-gold);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(241, 196, 15, 0.15);
+        }
+
+        .defi-section p, .defi-section li {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .defi-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .defi-section li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .defi-section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--kalmydas-green);
+        }
+
+        .defi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .defi-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px 20px;
+            transition: all 0.3s;
+        }
+
+        .defi-card:hover {
+            border-color: var(--kalmydas-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .defi-card .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .defi-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .defi-card .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .defi-card .card-stat {
+            font-size: 0.8rem;
+            color: var(--kalmydas-green);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .contract-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+
+        .contract-table th {
+            text-align: left;
+            padding: 12px 15px;
+            color: var(--kalmydas-gold);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contract-table td {
+            padding: 10px 15px;
+            color: var(--text-dim);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .contract-table a {
+            color: var(--kalmydas-green);
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .contract-table a:hover {
+            color: var(--kalmydas-gold);
+            text-decoration: underline;
+        }
+
+        .contract-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: var(--kalmydas-gold);
+        }
+
+        .faq-question .arrow {
+            transition: transform 0.3s;
+            color: var(--kalmydas-gold);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s;
+            padding: 0 20px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 20px 18px;
+        }
+
+        .faq-item.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 600px) {
+            .contract-table th:nth-child(2),
+            .contract-table td:nth-child(2) {
+                display: none;
+            }
+        }
+
         footer {
             margin-top: 80px;
             text-align: center;
@@ -473,6 +677,263 @@
                     </div>
                 </div>
                 <a href="05_PORTAL_KalMydas_ORION.html" class="btn-access">Découvrir le Pack</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTIONS DEFI ===== -->
+        <div class="defi-separator">
+            <h2>Documentation DeFi</h2>
+            <p>Protocole KalMydas sur Base L2 — Pools, Token, Contrats</p>
+        </div>
+
+        <!-- POOLS -->
+        <div class="defi-section">
+            <h3>Les Pools d'Investissement</h3>
+            <p>Chaque pool est pilotée par un robot de trading algorithmique sur l'or (XAUUSD). Les rendements proviennent de vraies opérations de marché, pas de mécanismes DeFi spéculatifs.</p>
+            <div class="defi-grid">
+                <div class="defi-card">
+                    <div class="card-icon">&#x1F305;</div>
+                    <div class="card-title">Horizon</div>
+                    <div class="card-desc">Suivi de tendance majeure — prudent et régulier</div>
+                    <div class="card-stat">APY cible : ~4% | Risque : Prudent</div>
+                </div>
+                <div class="defi-card">
+                    <div class="card-icon">&#x2694;&#xFE0F;</div>
+                    <div class="card-title">Valkyrie</div>
+                    <div class="card-desc">Breakout + pyramide — équilibré entre risque et rendement</div>
+                    <div class="card-stat">APY cible : ~12.8% | Risque : Équilibré</div>
+                </div>
+                <div class="defi-card">
+                    <div class="card-icon">&#x1F525;</div>
+                    <div class="card-title">Revolution</div>
+                    <div class="card-desc">Breakout tendanciel + triple filtre — rendements dynamiques</div>
+                    <div class="card-stat">APY cible : ~24.6% | Risque : Dynamique</div>
+                </div>
+                <div class="defi-card">
+                    <div class="card-icon">&#x1F3E6;</div>
+                    <div class="card-title">Treasury</div>
+                    <div class="card-desc">Phoenix Engine — trailing adaptatif + protection du capital</div>
+                    <div class="card-stat">APY cible : ~33.2% | Risque : Dynamique</div>
+                </div>
+                <div class="defi-card">
+                    <div class="card-icon">&#x2B50;</div>
+                    <div class="card-title">Orion</div>
+                    <div class="card-desc">Mission x10 — haute performance, risque de perte totale</div>
+                    <div class="card-stat">APY cible : ~78.5% | Risque : Offensif</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMMENT CA MARCHE -->
+        <div class="defi-section">
+            <h3>Comment investir ?</h3>
+            <ul>
+                <li>Connectez-vous sur <a href="https://app.kalmydas.com" style="color: var(--kalmydas-green);">app.kalmydas.com</a> avec MetaMask ou Google</li>
+                <li>Achetez un Access Pass (abonnement requis pour investir)</li>
+                <li>Déposez du USDC dans la pool de votre choix</li>
+                <li>Vos fonds sont gérés par le robot — retirez 24h/24 quand vous voulez</li>
+                <li>Les gains sont distribués automatiquement via les smart contracts</li>
+            </ul>
+        </div>
+
+        <!-- TOKEN KAL -->
+        <div class="defi-section">
+            <h3>Token KAL</h3>
+            <p>Le token utilitaire de l'écosystème KalMydas. Il sert à la gouvernance, au staking de liquidité, et comme bonus de récompense pour les déposants.</p>
+            <div class="defi-grid">
+                <div class="defi-card">
+                    <div class="card-title">Bonding Curve</div>
+                    <div class="card-desc">Le prix du KAL augmente automatiquement avec la demande. Plus il y a d'acheteurs, plus le prix monte.</div>
+                </div>
+                <div class="defi-card">
+                    <div class="card-title">Récompenses LP</div>
+                    <div class="card-desc">Fournissez de la liquidité USDC/KAL sur KalSwap et gagnez des KAL en staking.</div>
+                </div>
+                <div class="defi-card">
+                    <div class="card-title">Airdrop</div>
+                    <div class="card-desc">Les premiers utilisateurs reçoivent des KAL gratuits avec un vesting progressif (6 tranches).</div>
+                </div>
+                <div class="defi-card">
+                    <div class="card-title">Buyback & Burn</div>
+                    <div class="card-desc">Une partie des frais de performance est utilisée pour racheter et brûler du KAL, réduisant l'offre.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCESS PASS -->
+        <div class="defi-section">
+            <h3>Access Pass</h3>
+            <p>L'Access Pass est un NFT d'abonnement qui donne accès aux pools d'investissement. Sans Access Pass actif, il est impossible de déposer dans une pool.</p>
+            <ul>
+                <li>Prix : 1 USDC par jour (payé en USDC)</li>
+                <li>Durée flexible : 30, 90, 180 ou 365 jours</li>
+                <li>Renouvelable à tout moment avant ou après expiration</li>
+                <li>NFT ERC-721 : vous en êtes le propriétaire sur la blockchain</li>
+            </ul>
+        </div>
+
+        <!-- FRAIS -->
+        <div class="defi-section">
+            <h3>Frais & High-Water Mark</h3>
+            <ul>
+                <li><strong style="color: #fff;">Frais de gestion :</strong> ~1.2% à ~6% par an selon la pool (prélevés graduellement)</li>
+                <li><strong style="color: #fff;">Frais de performance :</strong> 10% à 20% sur les gains uniquement</li>
+                <li><strong style="color: #fff;">High-Water Mark :</strong> Les frais de performance ne sont prélevés que quand la pool dépasse son précédent record. Pas de double facturation sur les mêmes gains.</li>
+                <li><strong style="color: #fff;">Pas de frais d'entrée/sortie :</strong> Déposez et retirez sans aucun frais supplémentaire</li>
+            </ul>
+        </div>
+
+        <!-- SMART CONTRACTS -->
+        <div class="defi-section">
+            <h3>Smart Contracts (Base Sepolia Testnet)</h3>
+            <p>Tous les contrats sont déployés et vérifiables sur BaseScan. Le réseau actuel est Base Sepolia (testnet).</p>
+            <div style="overflow-x: auto;">
+                <table class="contract-table">
+                    <thead>
+                        <tr>
+                            <th>Contrat</th>
+                            <th>Rôle</th>
+                            <th>Adresse</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">USDC (Mock)</td>
+                            <td>Stablecoin de dépôt</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x2c55Dfa9dB4190243eBF5699Ea680A7E18964223" target="_blank">0x2c55...5223</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">USDT (Mock)</td>
+                            <td>Stablecoin alternatif</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x9aCCF9c6c5f93946D0c4EFd9Aa981e0Ab3B28EF4" target="_blank">0x9aCCF...8EF4</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">KAL Token</td>
+                            <td>Token utilitaire</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x91850E2eCD2Ef542F3D6284dC146482d41B27bDA" target="_blank">0x9185...bDA</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Pool Manager</td>
+                            <td>Gestion des pools</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x3d93048a49f68Bf1AC1987b2d6490614E84CEbfc" target="_blank">0x3d93...bfc</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Bonding Curve</td>
+                            <td>Prix du KAL</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x0B0d5C960ba7B4545d99094a93360EABFa95522d" target="_blank">0x0B0d...22d</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Access Pass</td>
+                            <td>NFT abonnement</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x531ee9553817DACa06b8491aa74F365BeD1705F8" target="_blank">0x531e...5F8</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">KalSwap</td>
+                            <td>DEX USDC/KAL</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x06205776D6e1a7446875A58d460e17572F5872aE" target="_blank">0x0620...2aE</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Liquidity Rewards</td>
+                            <td>Récompenses LP</td>
+                            <td><a href="https://sepolia.basescan.org/address/0xF81bb338C7C2F765BE98C56f7F6C2f8DeC8e0bfc" target="_blank">0xF81b...bfc</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Airdrop</td>
+                            <td>Distribution KAL</td>
+                            <td><a href="https://sepolia.basescan.org/address/0xE117f3DAAC86908341fBECF01F865Cc0E1fEfb24" target="_blank">0xE117...b24</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Buyback Burner</td>
+                            <td>Rachat & burn KAL</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x807a7834a75be1aAa5D8f4b849A49F3CFB3EEf37" target="_blank">0x807a...f37</a></td>
+                        </tr>
+                        <tr><td colspan="3" style="color: var(--kalmydas-gold); font-weight: 700; padding-top: 20px;">Pools</td></tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Horizon</td>
+                            <td>Pool prudente</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x7DAf59a4c87d8870E16B1ba2A3e5b4F42741A1C9" target="_blank">0x7DAf...1C9</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Valkyrie</td>
+                            <td>Pool équilibrée</td>
+                            <td><a href="https://sepolia.basescan.org/address/0xF3F0808D2d038f36eb1bACAb937574D85026f46c" target="_blank">0xF3F0...46c</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Revolution</td>
+                            <td>Pool dynamique</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x4fe28C7279a7847E998498f9b7B8D5b1aA318e09" target="_blank">0x4fe2...e09</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Treasury</td>
+                            <td>Pool dynamique</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x8c2674A9d8dC630d753Fa43A365A723188926265" target="_blank">0x8c26...265</a></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #fff; font-weight: 600;">Orion</td>
+                            <td>Pool offensive</td>
+                            <td><a href="https://sepolia.basescan.org/address/0x0D4c46Ad116867b6a7aeEAB820778d540Cae15D6" target="_blank">0x0D4c...5D6</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECURITE -->
+        <div class="defi-section">
+            <h3>Sécurité</h3>
+            <ul>
+                <li><strong style="color: #fff;">Réseau Base L2 :</strong> Layer 2 d'Ethereum (Coinbase) — frais très bas, sécurité Ethereum</li>
+                <li><strong style="color: #fff;">Circuit Breakers :</strong> Le bot se désactive automatiquement si le gain/perte journalier dépasse un seuil</li>
+                <li><strong style="color: #fff;">Alertes Telegram :</strong> Chaque trade, chaque dépôt, chaque retrait est notifié en temps réel</li>
+                <li><strong style="color: #fff;">Contrats non-upgradable :</strong> Le code des contrats ne peut pas être modifié après déploiement</li>
+                <li><strong style="color: #fff;">Retrait libre :</strong> Vos fonds sont toujours disponibles, 24h/24, sans délai</li>
+            </ul>
+        </div>
+
+        <!-- FAQ -->
+        <div class="defi-section">
+            <h3>FAQ</h3>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>D'où viennent les rendements ?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">Les rendements proviennent exclusivement du trading algorithmique sur l'or (XAUUSD) via MetaTrader 4. Chaque pool est connectée à un robot de trading réel. Il n'y a pas de mécanisme Ponzi ou de rendement artificiel.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Puis-je retirer mes fonds à tout moment ?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">Oui. Il n'y a pas de période de lock-up. Vous pouvez retirer vos fonds 24h/24, 7j/7. Le retrait est instantané via le smart contract.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Qu'est-ce que l'Access Pass ?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">L'Access Pass est un NFT d'abonnement à 1 USDC/jour. Il est nécessaire pour déposer dans les pools. Sans Access Pass actif, vous pouvez consulter les performances mais pas investir.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Comment fonctionne le High-Water Mark ?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">Le High-Water Mark garantit que les frais de performance ne sont prélevés que sur les nouveaux gains. Si la pool perd de la valeur puis remonte, les frais ne sont prélevés qu'une fois le précédent record dépassé.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Est-ce que je peux perdre mon capital ?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">Oui, comme tout investissement, il y a un risque de perte. Les robots tradent sur les marchés réels. Les pools prudentes (Horizon) ont un risque limité, tandis que les pools offensives (Orion) peuvent subir des pertes importantes.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Sur quel réseau blockchain fonctionne KalMydas ?</span>
+                    <span class="arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">KalMydas fonctionne sur Base, le Layer 2 d'Ethereum développé par Coinbase. Actuellement en testnet (Base Sepolia), la migration vers le mainnet est prévue prochainement.</div>
             </div>
         </div>
 
