@@ -1,550 +1,486 @@
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KalMydas | Documentation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-<style>
-:root{--green:#2ecc71;--gold:#f1c40f;--bg:#0a0e12;--card:rgba(255,255,255,0.03);--border:rgba(241,196,15,0.2);--text:#ecf0f1;--dim:rgba(236,240,241,0.6);--sidebar-w:260px;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;line-height:1.7;overflow-x:hidden;background-image:radial-gradient(circle at 20% 30%,rgba(46,204,113,0.05) 0%,transparent 40%),radial-gradient(circle at 80% 70%,rgba(241,196,15,0.05) 0%,transparent 40%);}
-a{color:var(--gold);text-decoration:none;transition:color .3s;}
-a:hover{color:#fff;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KalMydas | Global Performance Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --kalmydas-green: #2ecc71;
+            --kalmydas-gold: #f1c40f;
+            --dark-bg: #0a0e12;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(241, 196, 15, 0.2);
+            --text-main: #ecf0f1;
+            --text-dim: rgba(236, 240, 241, 0.6);
+        }
 
-/* SIDEBAR */
-.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:rgba(10,14,18,0.97);border-right:1px solid var(--border);padding:30px 0;z-index:100;overflow-y:auto;transition:transform .3s;}
-.sidebar-logo{text-align:center;padding:0 20px 30px;border-bottom:1px solid rgba(255,255,255,0.05);}
-.sidebar-logo img{height:40px;filter:drop-shadow(0 0 8px rgba(241,196,15,0.3));}
-.sidebar-logo h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-top:8px;}
-.sidebar-nav{padding:20px 0;}
-.sidebar-nav a{display:block;padding:10px 30px;font-size:.85rem;color:var(--dim);transition:all .3s;border-left:3px solid transparent;}
-.sidebar-nav a:hover,.sidebar-nav a.active{color:var(--gold);background:rgba(241,196,15,0.05);border-left-color:var(--gold);}
-.sidebar-cta{padding:20px 25px;}
-.sidebar-cta a{display:block;text-align:center;background:var(--gold);color:#000;padding:12px;border-radius:10px;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:1px;}
-.sidebar-cta a:hover{background:#fff;color:#000;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* HAMBURGER */
-.hamburger{display:none;position:fixed;top:15px;right:20px;z-index:200;width:36px;height:36px;cursor:pointer;background:rgba(10,14,18,0.9);border:1px solid var(--border);border-radius:8px;padding:8px 6px;flex-direction:column;justify-content:space-between;}
-.hamburger span{display:block;height:2px;background:var(--gold);border-radius:2px;transition:all .3s;}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:90;}
-.overlay.open{display:block;}
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(46, 204, 113, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(241, 196, 15, 0.05) 0%, transparent 40%);
+        }
 
-/* MAIN CONTENT */
-.main{margin-left:var(--sidebar-w);min-height:100vh;}
-.content{max-width:900px;margin:0 auto;padding:40px 30px 80px;}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 15px;
+        }
 
-/* HERO */
-.hero{text-align:center;padding:60px 0 50px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:50px;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px;}
-.hero p{color:var(--dim);font-size:1rem;max-width:500px;margin:0 auto;}
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-/* SECTIONS */
-.section{margin-bottom:60px;padding-top:30px;}
-.section-title{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);margin-bottom:8px;padding-bottom:12px;border-bottom:2px solid var(--border);}
-.section-sub{color:var(--dim);font-size:.9rem;margin-bottom:30px;}
+        .logo-container {
+            margin-bottom: 20px;
+        }
 
-/* CARDS */
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:25px;margin-bottom:20px;transition:all .4s;}
-.card:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 15px 30px rgba(0,0,0,0.3);}
-.card h3{color:var(--gold);font-size:1.3rem;font-weight:800;margin-bottom:4px;}
-.card .tag{display:inline-block;font-size:.7rem;padding:3px 10px;border-radius:20px;background:rgba(46,204,113,0.15);color:var(--green);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;}
-.card .tag.risk-high{background:rgba(231,76,60,0.15);color:#e74c3c;}
-.card .tag.risk-med{background:rgba(241,196,15,0.15);color:var(--gold);}
+        .logo-container img {
+            height: clamp(40px, 10vw, 60px);
+            filter: drop-shadow(0 0 10px rgba(241, 196, 15, 0.3));
+        }
 
-/* STATS GRID */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:15px 0;}
-.stat{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;text-align:center;}
-.stat-label{font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:1px;}
-.stat-val{font-size:1rem;font-weight:700;}
-.stat-val.pos{color:var(--green);}
-.stat-val.neg{color:#e74c3c;}
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 10vw, 3.5rem);
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 0%, var(--kalmydas-gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
+            line-height: 1.1;
+        }
 
-/* TABLES */
-.table-wrap{overflow-x:auto;margin:20px 0;}
-table{width:100%;border-collapse:collapse;font-size:.85rem;}
-th{text-align:left;padding:12px 15px;background:rgba(241,196,15,0.08);color:var(--gold);font-weight:600;border-bottom:1px solid var(--border);}
-td{padding:10px 15px;border-bottom:1px solid rgba(255,255,255,0.03);}
-tr:hover td{background:rgba(255,255,255,0.02);}
+        .subtitle {
+            font-size: clamp(0.8rem, 3vw, 1.1rem);
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: clamp(2px, 1.5vw, 5px);
+            font-weight: 300;
+        }
 
-/* ADDRESS LINKS */
-.addr{font-family:monospace;font-size:.8rem;color:var(--dim);transition:color .3s;}
-.addr:hover{color:var(--gold);}
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(15px, 4vw, 30px);
+        }
 
-/* STEPS */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:25px 0;}
-.step{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:25px;text-align:center;}
-.step-num{width:40px;height:40px;border-radius:50%;background:var(--gold);color:#000;font-weight:800;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;}
-.step h4{font-size:1rem;margin-bottom:8px;}
-.step p{font-size:.8rem;color:var(--dim);}
+        .robot-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: clamp(25px, 5vw, 40px) clamp(15px, 4vw, 30px);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
 
-/* TIMELINE */
-.timeline{position:relative;padding-left:30px;margin:30px 0;}
-.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border);}
-.tl-item{position:relative;margin-bottom:35px;}
-.tl-item::before{content:'';position:absolute;left:-26px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--border);border:2px solid var(--bg);}
-.tl-item.done::before{background:var(--green);box-shadow:0 0 10px rgba(46,204,113,0.4);}
-.tl-period{font-weight:800;font-size:1rem;color:var(--gold);margin-bottom:6px;}
-.tl-done{display:inline-block;font-size:.65rem;padding:2px 8px;border-radius:10px;background:rgba(46,204,113,0.15);color:var(--green);margin-left:8px;}
-.tl-item ul{list-style:none;padding:0;}
-.tl-item li{font-size:.85rem;color:var(--dim);padding:3px 0;padding-left:18px;position:relative;}
-.tl-item li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);}
-.tl-item.done li::before{background:var(--green);}
+        .robot-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--kalmydas-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(241, 196, 15, 0.1);
+        }
 
-/* FAQ */
-.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;}
-.faq-q{padding:16px 20px;cursor:pointer;font-weight:600;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;transition:background .3s;}
-.faq-q:hover{background:rgba(241,196,15,0.05);}
-.faq-q::after{content:'+';font-size:1.2rem;color:var(--gold);transition:transform .3s;}
-.faq-item.open .faq-q::after{content:'-';transform:rotate(180deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 20px;}
-.faq-item.open .faq-a{max-height:300px;padding:0 20px 16px;}
-.faq-a p{font-size:.85rem;color:var(--dim);line-height:1.7;}
+        .robot-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--kalmydas-gold), transparent);
+            opacity: 0.3;
+        }
 
-/* SECURITY GRID */
-.sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin:25px 0;}
-.sec-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:25px;}
-.sec-icon{font-size:1.8rem;margin-bottom:10px;}
-.sec-card h4{color:var(--text);font-size:.95rem;margin-bottom:8px;}
-.sec-card p{font-size:.8rem;color:var(--dim);}
+        .robot-name {
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
+            font-weight: 800;
+            color: var(--kalmydas-gold);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
 
-/* HWM BOX */
-.hwm-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);border-radius:16px;padding:25px;margin:20px 0;}
-.hwm-box h4{color:var(--green);margin-bottom:10px;}
+        .robot-type {
+            font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
 
-/* FEE FLOW */
-.fee-flow{display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;margin:25px 0;}
-.fee-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px 20px;text-align:center;min-width:120px;}
-.fee-box strong{display:block;font-size:1.2rem;color:var(--gold);}
-.fee-box span{font-size:.75rem;color:var(--dim);}
-.fee-arrow{color:var(--gold);font-size:1.5rem;}
+        /* Metrics Grid */
+        .metrics-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
 
-/* TESTNET BADGE */
-.testnet-badge{display:inline-block;margin-top:15px;padding:8px 20px;border-radius:20px;background:rgba(241,196,15,0.1);border:1px solid var(--border);font-size:.8rem;color:var(--gold);}
+        .metric-box {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+        }
 
-/* POOL LINK */
-.pool-link{display:inline-block;margin-top:12px;padding:8px 20px;border:1px solid var(--gold);border-radius:10px;font-size:.8rem;color:var(--gold);font-weight:600;transition:all .3s;}
-.pool-link:hover{background:var(--gold);color:#000;}
+        .metric-label {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
 
-/* FOOTER */
-footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,0.05);margin-top:60px;}
-footer a{margin:0 12px;font-size:.8rem;}
-footer p{color:var(--dim);font-size:.7rem;margin-top:15px;letter-spacing:2px;text-transform:uppercase;}
+        .metric-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
 
-/* FADE IN */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
+        .metric-value.positive {
+            color: var(--kalmydas-green);
+        }
 
-/* MOBILE */
-@media(max-width:900px){
-.sidebar{transform:translateX(-100%);}
-.sidebar.open{transform:translateX(0);}
-.hamburger{display:flex;}
-.main{margin-left:0;}
-.content{padding:70px 15px 60px;}
-.hero h1{font-size:1.8rem;}
-.steps{grid-template-columns:1fr;}
-.fee-flow{flex-direction:column;}
-.fee-arrow{transform:rotate(90deg);}
-}
-</style>
+        .metric-value.negative {
+            color: #e74c3c;
+        }
+
+        /* Power Bars */
+        .power-bars {
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .bar-group {
+            margin-bottom: 18px;
+        }
+
+        .bar-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .bar-container {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        .bar-securite {
+            background: var(--kalmydas-green);
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+
+        .bar-potentiel {
+            background: var(--kalmydas-gold);
+            box-shadow: 0 0 10px rgba(241, 196, 15, 0.4);
+        }
+
+        .bar-resilience {
+            background: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Stars */
+        .stars-container {
+            margin-bottom: 25px;
+            color: var(--kalmydas-gold);
+            font-size: 1.2rem;
+            display: flex;
+            gap: 3px;
+        }
+
+        .btn-access {
+            display: block;
+            text-align: center;
+            background: var(--kalmydas-gold);
+            color: #000;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .btn-access:hover {
+            background: #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 480px) {
+            .metrics-summary {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .metric-box {
+                padding: 10px;
+            }
+
+            .bar-header {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- OVERLAY -->
-<div class="overlay" id="overlay"></div>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="KalMydas.jpg" alt="Logo KalMydas">
+            </div>
+            <h1>Suite Comparative</h1>
+            <p class="subtitle">Indice de Performance Écosystème</p>
+        </header>
 
-<!-- HAMBURGER -->
-<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        <div class="dashboard-grid">
 
-<!-- SIDEBAR -->
-<nav class="sidebar" id="sidebar">
-<div class="sidebar-logo">
-<img src="KalMydas.jpg" alt="KalMydas">
-<h3>Documentation</h3>
-</div>
-<div class="sidebar-nav">
-<a href="#commencer" class="active">Commencer</a>
-<a href="#pools">Les Pools</a>
-<a href="#token">Token KAL</a>
-<a href="#access-pass">Access Pass</a>
-<a href="#frais">Frais</a>
-<a href="#contrats">Smart Contracts</a>
-<a href="#securite">Securite</a>
-<a href="#roadmap">Roadmap</a>
-<a href="#faq">FAQ</a>
-</div>
-<div class="sidebar-cta">
-<a href="https://app.kalmydas.com" target="_blank">Lancer l'app</a>
-</div>
-</nav>
+            <div class="robot-card">
+                <div class="robot-name">HORIZON</div>
+                <div class="robot-type">Algorithme de Suivi de Tendance Majeure</div>
+                <div class="stars-container"><span>★★★</span></div>
+                <div class="metrics-summary">
+                    <div class="metric-box">
+                        <div class="metric-label">Gain Annuel</div>
+                        <div class="metric-value positive">+5.2%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Max Drawdown</div>
+                        <div class="metric-value negative">44.1%</div>
+                    </div>
+                </div>
+                <div class="power-bars">
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Security</span><span>60%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-securite" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Potential</span><span>40%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-potentiel" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Résilience</span><span>60%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-resilience" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="01_PORTAL_KalMydas_HORIZON.html" class="btn-access">Découvrir le Pack</a>
+            </div>
 
-<!-- MAIN -->
-<div class="main">
-<div class="content">
+            <div class="robot-card">
+                <div class="robot-name">VALKYRIE</div>
+                <div class="robot-type">Algorithme de Swing Trading sur Or</div>
+                <div class="stars-container"><span>★★★★★</span></div>
+                <div class="metrics-summary">
+                    <div class="metric-box">
+                        <div class="metric-label">Gain Annuel</div>
+                        <div class="metric-value positive">+35.4%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Max Drawdown</div>
+                        <div class="metric-value negative">54.3%</div>
+                    </div>
+                </div>
+                <div class="power-bars">
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Security</span><span>100%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-securite" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Potential</span><span>80%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-potentiel" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Résilience</span><span>80%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-resilience" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="02_PORTAL_KalMydas_VALKYRIE.html" class="btn-access">Découvrir le Pack</a>
+            </div>
 
-<!-- HERO -->
-<div class="hero" id="hero">
-<h1>Documentation KalMydas</h1>
-<p>Trading algorithmique sur l'or, decentralise et accessible a tous.</p>
-</div>
+            <div class="robot-card">
+                <div class="robot-name">REVOLUTION</div>
+                <div class="robot-type">La Révolution du Trading Haute Performance</div>
+                <div class="stars-container"><span>★★★</span></div>
+                <div class="metrics-summary">
+                    <div class="metric-box">
+                        <div class="metric-label">Gain Mensuel</div>
+                        <div class="metric-value positive">+39.7%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Max Drawdown</div>
+                        <div class="metric-value negative">61.4%</div>
+                    </div>
+                </div>
+                <div class="power-bars">
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Security</span><span>60%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-securite" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Potential</span><span>100%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-potentiel" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Résilience</span><span>60%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-resilience" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="03_PORTAL_KalMydas_REVOLUTION.html" class="btn-access">Découvrir le Pack</a>
+            </div>
 
-<!-- COMMENCER -->
-<section class="section fade-in" id="commencer">
-<h2 class="section-title">Commencer</h2>
-<p class="section-sub">Tout ce qu'il faut savoir pour utiliser KalMydas en quelques minutes.</p>
+            <div class="robot-card">
+                <div class="robot-name">TREASURY</div>
+                <div class="robot-type">L'Art de l'Investissement Algorithmique sur Or</div>
+                <div class="stars-container"><span>★★★★</span></div>
+                <div class="metrics-summary">
+                    <div class="metric-box">
+                        <div class="metric-label">Gain Journalier</div>
+                        <div class="metric-value positive">+5.5%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Max Drawdown</div>
+                        <div class="metric-value negative">68.0%</div>
+                    </div>
+                </div>
+                <div class="power-bars">
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Security</span><span>80%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-securite" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Potential</span><span>100%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-potentiel" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Résilience</span><span>80%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-resilience" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="04_PORTAL_KalMydas_TREASURY.html" class="btn-access">Découvrir le Pack</a>
+            </div>
 
-<div class="card">
-<h3>Qu'est-ce que KalMydas ?</h3>
-<p style="color:var(--dim);font-size:.9rem;margin-top:8px;">KalMydas est une plateforme DeFi de trading algorithmique specialisee sur l'or (XAUUSD). Elle permet a quiconque d'investir dans des strategies de trading automatisees, backtestees sur 11 a 21 ans, via des smart contracts sur la blockchain Base (Layer 2 d'Ethereum). Les frais sont faibles, les retraits instantanes, et la transparence totale.</p>
-</div>
+            <div class="robot-card">
+                <div class="robot-name">ORION</div>
+                <div class="robot-type">L'Excellence du Momentum Intraday</div>
+                <div class="stars-container"><span>★★★★</span></div>
+                <div class="metrics-summary">
+                    <div class="metric-box">
+                        <div class="metric-label">Gain Mensuel</div>
+                        <div class="metric-value positive">+61.0%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Max Drawdown</div>
+                        <div class="metric-value negative">31.4%</div>
+                    </div>
+                </div>
+                <div class="power-bars">
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Security</span><span>80%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-securite" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Potential</span><span>100%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-potentiel" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-header"><span>Résilience</span><span>100%</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-resilience" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="05_PORTAL_KalMydas_ORION.html" class="btn-access">Découvrir le Pack</a>
+            </div>
+        </div>
 
-<div class="card">
-<h3>Comment se connecter ?</h3>
-<p style="color:var(--dim);font-size:.9rem;margin-top:8px;"><strong style="color:var(--gold);">MetaMask</strong> (recommande) : Vous gardez votre seed phrase (12 mots) et le controle total de vos fonds.<br>
-<strong style="color:var(--gold);">Google / Email</strong> : Connexion simplifiee via Privy. Pas de seed phrase, mais plus accessible pour les debutants.</p>
-</div>
+        <footer>
+            © 2026 KALMYDAS ALGORITHMIC FREEDOM GREEN GROWTH
+        </footer>
+    </div>
 
-<h3 style="color:var(--text);margin:30px 0 15px;font-family:'Playfair Display',serif;">Investir en 3 etapes</h3>
-<div class="steps">
-<div class="step"><div class="step-num">1</div><h4>Connecter</h4><p>Connectez votre wallet MetaMask ou votre compte Google sur app.kalmydas.com</p></div>
-<div class="step"><div class="step-num">2</div><h4>Access Pass</h4><p>Achetez un Access Pass (NFT Soulbound) pour acceder aux pools de trading</p></div>
-<div class="step"><div class="step-num">3</div><h4>Deposer</h4><p>Deposez vos USDC ou KAL dans la pool de votre choix et laissez le robot trader</p></div>
-</div>
-</section>
-
-<!-- POOLS -->
-<section class="section fade-in" id="pools">
-<h2 class="section-title">Les Pools de Trading</h2>
-<p class="section-sub">5 strategies algorithmiques sur l'or (XAUUSD), backtestees sur de longues periodes.</p>
-
-<div class="card">
-<h3>HORIZON</h3>
-<span class="tag">Prudent ~ +4%/an</span>
-<div class="stats">
-<div class="stat"><div class="stat-label">Win Rate</div><div class="stat-val">21.49%</div></div>
-<div class="stat"><div class="stat-label">Profit Factor</div><div class="stat-val pos">1.31</div></div>
-<div class="stat"><div class="stat-label">Max Drawdown</div><div class="stat-val neg">46.01%</div></div>
-<div class="stat"><div class="stat-label">Backtest</div><div class="stat-val">11 ans</div></div>
-</div>
-<p style="font-size:.8rem;color:var(--dim);">XAUUSD H4 | Achat uniquement | 1098 trades (2015-2026) | Frais : 10% perf / 1.2%/an gestion</p>
-<a href="01_PORTAL_KalMydas_HORIZON.html" class="pool-link">Voir le dossier complet &rarr;</a>
-</div>
-
-<div class="card">
-<h3>VALKYRIE</h3>
-<span class="tag risk-med">Equilibre ~ +12.8%/an</span>
-<div class="stats">
-<div class="stat"><div class="stat-label">Win Rate</div><div class="stat-val">46.81%</div></div>
-<div class="stat"><div class="stat-label">Profit Factor</div><div class="stat-val pos">2.30</div></div>
-<div class="stat"><div class="stat-label">Max Drawdown</div><div class="stat-val neg">59.14%</div></div>
-<div class="stat"><div class="stat-label">Backtest</div><div class="stat-val">16 ans</div></div>
-</div>
-<p style="font-size:.8rem;color:var(--dim);">XAUUSD H1-H4 | Bidirectionnel | 329 trades (2010-2026) | Frais : 20% perf / 2.4%/an gestion</p>
-<a href="02_PORTAL_KalMydas_VALKYRIE.html" class="pool-link">Voir le dossier complet &rarr;</a>
-</div>
-
-<div class="card">
-<h3>REVOLUTION</h3>
-<span class="tag risk-med">Dynamique ~ +24.6%/an</span>
-<div class="stats">
-<div class="stat"><div class="stat-label">Win Rate</div><div class="stat-val">35%</div></div>
-<div class="stat"><div class="stat-label">Profit Factor</div><div class="stat-val pos">1.11</div></div>
-<div class="stat"><div class="stat-label">Max Drawdown</div><div class="stat-val neg">63.66%</div></div>
-<div class="stat"><div class="stat-label">Backtest</div><div class="stat-val">21 ans</div></div>
-</div>
-<p style="font-size:.8rem;color:var(--dim);">XAUUSD H1-H4 | Bidirectionnel | 2166 trades (2005-2026) | Frais : 20% perf / 6%/an gestion</p>
-<a href="03_PORTAL_KalMydas_REVOLUTION.html" class="pool-link">Voir le dossier complet &rarr;</a>
-</div>
-
-<div class="card">
-<h3>TREASURY</h3>
-<span class="tag risk-high">Dynamique ~ +33.2%/an</span>
-<div class="stats">
-<div class="stat"><div class="stat-label">Win Rate</div><div class="stat-val">38.18%</div></div>
-<div class="stat"><div class="stat-label">Profit Factor</div><div class="stat-val pos">1.35</div></div>
-<div class="stat"><div class="stat-label">Max Drawdown</div><div class="stat-val neg">70.26%</div></div>
-<div class="stat"><div class="stat-label">Backtest</div><div class="stat-val">21 ans</div></div>
-</div>
-<p style="font-size:.8rem;color:var(--dim);">XAUUSD H1-H4 | Bidirectionnel | Phoenix Engine | 1815 trades (2005-2026) | Frais : 20% perf / 6%/an gestion</p>
-<a href="04_PORTAL_KalMydas_TREASURY.html" class="pool-link">Voir le dossier complet &rarr;</a>
-</div>
-
-<div class="card">
-<h3>ORION</h3>
-<span class="tag risk-high">Offensif — Mission x10 ~ +78.5%/an</span>
-<div class="stats">
-<div class="stat"><div class="stat-label">Win Rate</div><div class="stat-val">64.88%</div></div>
-<div class="stat"><div class="stat-label">Profit Factor</div><div class="stat-val pos">1.65</div></div>
-<div class="stat"><div class="stat-label">Max Drawdown</div><div class="stat-val neg">9.11%</div></div>
-<div class="stat"><div class="stat-label">Backtest</div><div class="stat-val">20 ans</div></div>
-</div>
-<p style="font-size:.8rem;color:var(--dim);">XAUUSD H1 | Bidirectionnel | Auto-stop a x10 du capital | 800 trades (2005-2025) | Frais : 20% perf / 0% gestion</p>
-<a href="05_PORTAL_KalMydas_ORION.html" class="pool-link">Voir le dossier complet &rarr;</a>
-</div>
-</section>
-
-<!-- TOKEN KAL -->
-<section class="section fade-in" id="token">
-<h2 class="section-title">Token KAL</h2>
-<p class="section-sub">Le token utilitaire de l'ecosysteme KalMydas.</p>
-
-<div class="card">
-<h3>Caracteristiques</h3>
-<div class="stats" style="margin-top:15px;">
-<div class="stat"><div class="stat-label">Standard</div><div class="stat-val">ERC-20</div></div>
-<div class="stat"><div class="stat-label">Reseau</div><div class="stat-val">Base L2</div></div>
-<div class="stat"><div class="stat-label">Supply Max</div><div class="stat-val">10 000 000</div></div>
-<div class="stat"><div class="stat-label">Pre-mine</div><div class="stat-val pos">Aucune</div></div>
-</div>
-</div>
-
-<div class="card">
-<h3>Distribution</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Allocation</th><th>Quantite</th><th>%</th></tr></thead>
-<tbody>
-<tr><td>Bonding Curve (vente publique)</td><td>8 000 000 KAL</td><td>80%</td></tr>
-<tr><td>Recompenses de liquidite</td><td>2 000 000 KAL</td><td>20%</td></tr>
-</tbody>
-</table>
-</div>
-<p style="font-size:.8rem;color:var(--green);margin-top:10px;">Pas de tokens pour l'equipe. Pas de vente privee. 100% distribue au public.</p>
-</div>
-
-<div class="card">
-<h3>Bonding Curve</h3>
-<p style="font-size:.85rem;color:var(--dim);margin-top:8px;">Le prix du KAL augmente automatiquement avec la demande selon une courbe quadratique. Plus vous achetez tot, moins c'est cher. Le prix de depart est de <strong style="color:var(--gold);">$0.10</strong>.</p>
-</div>
-
-<div class="card">
-<h3>Buyback &amp; Burn</h3>
-<p style="font-size:.85rem;color:var(--dim);margin-top:8px;"><strong style="color:var(--gold);">30%</strong> de tous les frais des pools sont utilises pour racheter des KAL sur la bonding curve, puis les <strong style="color:#e74c3c;">bruler definitivement</strong>. Cela reduit l'offre en circulation et soutient le prix a la hausse.</p>
-</div>
-
-<div class="card">
-<h3>Avantage pour les detenteurs</h3>
-<p style="font-size:.85rem;color:var(--dim);margin-top:8px;">Deposez en <strong style="color:var(--gold);">KAL</strong> au lieu d'USDC pour beneficier d'une <strong style="color:var(--green);">reduction de 50%</strong> sur les frais de performance (ex: 20% &rarr; 10%).</p>
-</div>
-</section>
-
-<!-- ACCESS PASS -->
-<section class="section fade-in" id="access-pass">
-<h2 class="section-title">Access Pass</h2>
-<p class="section-sub">Votre cle d'acces aux pools de trading KalMydas.</p>
-
-<div class="card">
-<h3>NFT Soulbound</h3>
-<p style="font-size:.85rem;color:var(--dim);margin-top:8px;">L'Access Pass est un NFT <strong>non-transferable</strong> et <strong>non-revendable</strong> (Soulbound). Il est requis pour deposer dans les pools de trading. Sans Access Pass, vous pouvez toujours <strong style="color:var(--green);">retirer vos fonds</strong> a tout moment.</p>
-</div>
-
-<div class="card">
-<h3>Reductions longue duree</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Duree</th><th>Reduction</th></tr></thead>
-<tbody>
-<tr><td>Moins de 90 jours</td><td>Prix standard</td></tr>
-<tr><td>90 jours</td><td style="color:var(--green);">-10%</td></tr>
-<tr><td>180 jours</td><td style="color:var(--green);">-20%</td></tr>
-<tr><td>365 jours</td><td style="color:var(--green);">-30%</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-
-<!-- FRAIS -->
-<section class="section fade-in" id="frais">
-<h2 class="section-title">Frais</h2>
-<p class="section-sub">Structure de frais transparente avec le mecanisme High-Water Mark.</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr><th>Pool</th><th>Perf (USDC)</th><th>Perf (KAL)</th><th>Gestion</th></tr></thead>
-<tbody>
-<tr><td><strong style="color:var(--gold);">HORIZON</strong></td><td>10%</td><td>5%</td><td>1.2%/an</td></tr>
-<tr><td><strong style="color:var(--gold);">VALKYRIE</strong></td><td>20%</td><td>10%</td><td>2.4%/an</td></tr>
-<tr><td><strong style="color:var(--gold);">REVOLUTION</strong></td><td>20%</td><td>10%</td><td>6%/an</td></tr>
-<tr><td><strong style="color:var(--gold);">TREASURY</strong></td><td>20%</td><td>10%</td><td>6%/an</td></tr>
-<tr><td><strong style="color:var(--gold);">ORION</strong></td><td>20%</td><td>10%</td><td>0%</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="hwm-box">
-<h4>High-Water Mark (HWM)</h4>
-<p style="font-size:.85rem;color:var(--dim);">Les frais de performance ne s'appliquent que sur les <strong>nouveaux profits</strong> depassant le plus haut historique de votre investissement. Vous ne payez <strong>jamais</strong> de frais sur les pertes.</p>
-<p style="font-size:.85rem;color:var(--dim);margin-top:10px;"><strong>Exemple :</strong> Vous deposez 1 000 USDC. La pool monte a 1 200 (frais sur 200$). Elle redescend a 1 100, puis remonte a 1 300. Les frais ne s'appliquent que sur les 100$ au-dessus du precedent HWM (1 200 &rarr; 1 300).</p>
-</div>
-
-<h3 style="color:var(--text);margin:25px 0 15px;font-family:'Playfair Display',serif;">Flux des frais</h3>
-<div class="fee-flow">
-<div class="fee-box"><strong>100%</strong><span>Frais collectes</span></div>
-<span class="fee-arrow">&rarr;</span>
-<div class="fee-box"><strong>70%</strong><span>Plateforme</span></div>
-<span class="fee-arrow">&rarr;</span>
-<div class="fee-box" style="border-color:rgba(46,204,113,0.3);"><strong style="color:var(--green);">30%</strong><span>Buyback &amp; Burn KAL</span></div>
-</div>
-</section>
-
-<!-- SMART CONTRACTS -->
-<section class="section fade-in" id="contrats">
-<h2 class="section-title">Smart Contracts</h2>
-<p class="section-sub">Tous les contrats deployes sur Base Sepolia, verifiables sur BaseScan.</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr><th>Contrat</th><th>Adresse</th></tr></thead>
-<tbody>
-<tr><td>USDC Mock</td><td><a href="https://sepolia.basescan.org/address/0x2c55Dfa9dB4190243eBF5699Ea680A7E18964223" target="_blank" class="addr">0x2c55Dfa9...4223</a></td></tr>
-<tr><td>USDT Mock</td><td><a href="https://sepolia.basescan.org/address/0x9aCCF9c6c5f93946D0c4EFd9Aa981e0Ab3B28EF4" target="_blank" class="addr">0x9aCCF9c6...8EF4</a></td></tr>
-<tr><td>KAL Token</td><td><a href="https://sepolia.basescan.org/address/0x91850E2eCD2Ef542F3D6284dC146482d41B27bDA" target="_blank" class="addr">0x91850E2e...7bDA</a></td></tr>
-<tr><td>Bonding Curve</td><td><a href="https://sepolia.basescan.org/address/0x0B0d5C960ba7B4545d99094a93360EABFa95522d" target="_blank" class="addr">0x0B0d5C96...522d</a></td></tr>
-<tr><td>Pool Manager</td><td><a href="https://sepolia.basescan.org/address/0x3d93048a49f68Bf1AC1987b2d6490614E84CEbfc" target="_blank" class="addr">0x3d93048a...Ebfc</a></td></tr>
-<tr><td>Access Pass</td><td><a href="https://sepolia.basescan.org/address/0x531ee9553817DACa06b8491aa74F365BeD1705F8" target="_blank" class="addr">0x531ee955...05F8</a></td></tr>
-<tr><td>KalSwap</td><td><a href="https://sepolia.basescan.org/address/0x06205776D6e1a7446875A58d460e17572F5872aE" target="_blank" class="addr">0x06205776...72aE</a></td></tr>
-<tr><td>Liquidity Rewards</td><td><a href="https://sepolia.basescan.org/address/0xF81bb338C7C2F765BE98C56f7F6C2f8DeC8e0bfc" target="_blank" class="addr">0xF81bb338...0bfc</a></td></tr>
-<tr><td>KalAirdrop</td><td><a href="https://sepolia.basescan.org/address/0xE117f3DAAC86908341fBECF01F865Cc0E1fEfb24" target="_blank" class="addr">0xE117f3DA...fb24</a></td></tr>
-<tr><td>BuybackBurner</td><td><a href="https://sepolia.basescan.org/address/0x807a7834a75be1aAa5D8f4b849A49F3CFB3EEf37" target="_blank" class="addr">0x807a7834...Ef37</a></td></tr>
-<tr><td style="color:var(--gold);">HORIZON</td><td><a href="https://sepolia.basescan.org/address/0x7DAf59a4c87d8870E16B1ba2A3e5b4F42741A1C9" target="_blank" class="addr">0x7DAf59a4...A1C9</a></td></tr>
-<tr><td style="color:var(--gold);">VALKYRIE</td><td><a href="https://sepolia.basescan.org/address/0xF3F0808D2d038f36eb1bACAb937574D85026f46c" target="_blank" class="addr">0xF3F0808D...f46c</a></td></tr>
-<tr><td style="color:var(--gold);">REVOLUTION</td><td><a href="https://sepolia.basescan.org/address/0x4fe28C7279a7847E998498f9b7B8D5b1aA318e09" target="_blank" class="addr">0x4fe28C72...8e09</a></td></tr>
-<tr><td style="color:var(--gold);">TREASURY</td><td><a href="https://sepolia.basescan.org/address/0x8c2674A9d8dC630d753Fa43A365A723188926265" target="_blank" class="addr">0x8c2674A9...6265</a></td></tr>
-<tr><td style="color:var(--gold);">ORION</td><td><a href="https://sepolia.basescan.org/address/0x0D4c46Ad116867b6a7aeEAB820778d540Cae15D6" target="_blank" class="addr">0x0D4c46Ad...15D6</a></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="testnet-badge">Testnet (Base Sepolia) &mdash; Deploiement mainnet prevu Q3 2026</div>
-</section>
-
-<!-- SECURITE -->
-<section class="section fade-in" id="securite">
-<h2 class="section-title">Securite</h2>
-<p class="section-sub">Mecanismes de protection multi-couches pour vos fonds.</p>
-
-<div class="sec-grid">
-<div class="sec-card"><div class="sec-icon">&#9878;</div><h4>Base L2 (Ethereum)</h4><p>Smart contracts sur Base, Layer 2 heritant de la securite d'Ethereum avec des frais reduits.</p></div>
-<div class="sec-card"><div class="sec-icon">&#9888;</div><h4>Circuit Breakers</h4><p>Limites automatiques : gain max +5%/jour, perte max -10%/jour. Arret automatique si depasse.</p></div>
-<div class="sec-card"><div class="sec-icon">&#128274;</div><h4>Wallets separes</h4><p>Separation stricte : deployer, bot operateur et fonds personnels sont isoles.</p></div>
-<div class="sec-card"><div class="sec-icon">&#128225;</div><h4>Monitoring Telegram</h4><p>Alertes en temps reel pour chaque operation : trades, performance, alertes de securite.</p></div>
-<div class="sec-card"><div class="sec-icon">&#9889;</div><h4>Auto Gas</h4><p>Gestion automatisee du gas (ETH) pour garantir des transactions sans interruption.</p></div>
-</div>
-</section>
-
-<!-- ROADMAP -->
-<section class="section fade-in" id="roadmap">
-<h2 class="section-title">Roadmap</h2>
-<p class="section-sub">Feuille de route du projet KalMydas.</p>
-
-<div class="timeline">
-<div class="tl-item done">
-<div class="tl-period">Q1 2026 <span class="tl-done">Termine</span></div>
-<ul>
-<li>15 smart contracts deployes sur Base Sepolia</li>
-<li>Frontend complet (Next.js + Privy + wagmi)</li>
-<li>Bridge MT4 operationnel (robot &harr; blockchain)</li>
-<li>VPS de trading en production</li>
-<li>Documentation et portails de pools</li>
-</ul>
-</div>
-<div class="tl-item">
-<div class="tl-period">Q2 2026</div>
-<ul>
-<li>Audit de securite des smart contracts</li>
-<li>Beta testing avec utilisateurs selectionnes</li>
-<li>Publication du whitepaper technique</li>
-<li>Optimisation des strategies</li>
-</ul>
-</div>
-<div class="tl-item">
-<div class="tl-period">Q3 2026</div>
-<ul>
-<li>Deploiement mainnet sur Base</li>
-<li>Activation de l'Access Pass et des pools</li>
-<li>Lancement de la bonding curve KAL</li>
-<li>Premiers depots en production</li>
-</ul>
-</div>
-<div class="tl-item">
-<div class="tl-period">Q4 2026</div>
-<ul>
-<li>Programme de recompenses communautaires</li>
-<li>Listing KAL sur DEX (Uniswap/Aerodrome)</li>
-<li>Tableau de bord analytique avance</li>
-<li>Partenariats strategiques DeFi</li>
-</ul>
-</div>
-<div class="tl-item">
-<div class="tl-period">2027+</div>
-<ul>
-<li>Application mobile native (iOS/Android)</li>
-<li>Gouvernance DAO pour les detenteurs de KAL</li>
-<li>Expansion multi-chain (Arbitrum, Optimism)</li>
-<li>Nouvelles classes d'actifs (forex, indices)</li>
-</ul>
-</div>
-</div>
-</section>
-
-<!-- FAQ -->
-<section class="section fade-in" id="faq">
-<h2 class="section-title">FAQ</h2>
-<p class="section-sub">Questions frequemment posees sur KalMydas.</p>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Qu'est-ce que KalMydas ?</div><div class="faq-a"><p>KalMydas est une plateforme DeFi de trading algorithmique specialisee sur l'or (XAUUSD). Elle permet a quiconque d'investir dans des strategies de trading automatisees via des smart contracts sur la blockchain Base.</p></div></div>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Comment investir ?</div><div class="faq-a"><p>Connectez votre wallet (MetaMask ou Google), achetez un Access Pass (NFT Soulbound), puis deposez des USDC ou KAL dans la pool de votre choix. L'investissement minimum est de 10 USDC.</p></div></div>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Puis-je retirer a tout moment ?</div><div class="faq-a"><p>Oui, vous pouvez retirer vos fonds a tout moment, sans penalite ni delai de blocage. Meme si votre Access Pass a expire, le retrait reste possible.</p></div></div>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Qu'est-ce que le gas ?</div><div class="faq-a"><p>Le gas est une petite quantite d'ETH necessaire pour payer les frais de transaction sur la blockchain. Sur Base L2, les frais de gas sont tres faibles (quelques centimes).</p></div></div>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Que se passe-t-il si le robot perd ?</div><div class="faq-a"><p>Grace au mecanisme de High-Water Mark, aucun frais de performance n'est preleve sur les pertes. Les circuit breakers limitent les pertes quotidiennes a -10%.</p></div></div>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Qu'est-ce que le token KAL ?</div><div class="faq-a"><p>KAL est le token utilitaire de l'ecosysteme. Il offre une reduction de 50% sur les frais lorsque vous deposez en KAL. De plus, 30% des frais sont utilises pour racheter et bruler des KAL.</p></div></div>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">L'application est-elle securisee ?</div><div class="faq-a"><p>Oui. Les smart contracts seront audites. La plateforme integre des circuit breakers, un monitoring Telegram, une separation des wallets et une gestion automatisee du gas.</p></div></div>
-
-<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Est-ce reglemente ?</div><div class="faq-a"><p>KalMydas est une plateforme DeFi decentralisee. Elle ne constitue pas un service de conseil en investissement. Les utilisateurs sont responsables de leurs decisions.</p></div></div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-<div>
-<a href="https://kalmydas.com" target="_blank">kalmydas.com</a>
-<a href="https://app.kalmydas.com" target="_blank">app.kalmydas.com</a>
-<a href="https://x.com/KalMydas" target="_blank">Twitter</a>
-<a href="https://t.me/KalMydas" target="_blank">Telegram</a>
-</div>
-<p>&copy; 2026 KalMydas. Tous droits reserves.</p>
-</footer>
-
-</div>
-</div>
-
-<!-- JS -->
-<script>
-const hamburger=document.getElementById('hamburger'),sidebar=document.getElementById('sidebar'),overlay=document.getElementById('overlay');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');sidebar.classList.toggle('open');overlay.classList.toggle('open');});
-overlay.addEventListener('click',()=>{hamburger.classList.remove('open');sidebar.classList.remove('open');overlay.classList.remove('open');});
-document.querySelectorAll('.sidebar-nav a').forEach(l=>l.addEventListener('click',()=>{if(window.innerWidth<=900){hamburger.classList.remove('open');sidebar.classList.remove('open');overlay.classList.remove('open');}}));
-
-// Active nav on scroll
-const sections=document.querySelectorAll('.section,.hero'),navLinks=document.querySelectorAll('.sidebar-nav a');
-window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id;});navLinks.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+c)l.classList.add('active');});},{passive:true});
-
-// Fade in
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
-</script>
 </body>
+
 </html>
