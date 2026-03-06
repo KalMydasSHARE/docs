@@ -478,6 +478,51 @@
                 grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             }
         }
+
+        /* Infobulles termes techniques */
+        abbr[title] {
+            text-decoration: underline dotted rgba(241, 196, 15, 0.5);
+            text-underline-offset: 3px;
+            cursor: help;
+            position: relative;
+            color: var(--kalmydas-gold);
+            font-style: normal;
+        }
+        abbr[title]:hover {
+            color: #f5d657;
+        }
+        @media (hover: hover) {
+            abbr[title]:hover::after {
+                content: attr(title);
+                position: absolute;
+                bottom: calc(100% + 6px);
+                left: 50%;
+                transform: translateX(-50%);
+                background: #1a1e24;
+                color: #ecf0f1;
+                border: 1px solid rgba(241, 196, 15, 0.3);
+                border-radius: 8px;
+                padding: 8px 12px;
+                font-size: 12px;
+                line-height: 1.4;
+                white-space: normal;
+                width: max-content;
+                max-width: 280px;
+                z-index: 50;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+                pointer-events: none;
+            }
+            abbr[title]:hover::before {
+                content: "";
+                position: absolute;
+                bottom: calc(100% + 2px);
+                left: 50%;
+                transform: translateX(-50%);
+                border: 4px solid transparent;
+                border-top-color: #1a1e24;
+                z-index: 51;
+            }
+        }
     </style>
 </head>
 
@@ -491,9 +536,9 @@
             <h1>Suite Comparative</h1>
             <p class="subtitle">Indice de Performance Écosystème</p>
             <p style="margin-top: 15px; font-size: 0.8rem; color: var(--text-dim); letter-spacing: 1px;">
-                Performances exprimées en <strong style="color: var(--kalmydas-gold);">CAGR</strong>
+                Performances exprimées en <strong style="color: var(--kalmydas-gold);"><abbr title="Rendement annuel composé (CAGR) : taux de croissance moyen par an si les gains étaient réinvestis chaque année. Permet de comparer des stratégies sur des durées différentes.">rendement annuel composé</abbr></strong>
                 <span style="opacity: 0.7;">(Taux de Croissance Annuel Composé)</span> —
-                calculées à partir des backtests MT4 sur données historiques réelles
+                calculées à partir des <abbr title="Backtest : simulation de la stratégie sur des données historiques réelles pour évaluer comment elle aurait performé dans le passé.">backtests</abbr> <abbr title="MetaTrader 4 (MT4) : logiciel professionnel de trading utilisé pour exécuter des ordres sur les marchés financiers.">MT4</abbr> sur données historiques réelles
             </p>
         </header>
 
@@ -505,7 +550,7 @@
                 <div class="stars-container"><span>★★★</span></div>
                 <div class="metrics-summary">
                     <div class="metric-box">
-                        <div class="metric-label">CAGR Annuel</div>
+                        <div class="metric-label">Rendement annuel composé</div>
                         <div class="metric-value positive">+4.2%</div>
                     </div>
                     <div class="metric-box">
@@ -542,7 +587,7 @@
                 <div class="stars-container"><span>★★★★★</span></div>
                 <div class="metrics-summary">
                     <div class="metric-box">
-                        <div class="metric-label">CAGR Annuel</div>
+                        <div class="metric-label">Rendement annuel composé</div>
                         <div class="metric-value positive">+12.6%</div>
                     </div>
                     <div class="metric-box">
@@ -579,7 +624,7 @@
                 <div class="stars-container"><span>★★★</span></div>
                 <div class="metrics-summary">
                     <div class="metric-box">
-                        <div class="metric-label">CAGR Annuel</div>
+                        <div class="metric-label">Rendement annuel composé</div>
                         <div class="metric-value positive">+24.6%</div>
                     </div>
                     <div class="metric-box">
@@ -616,7 +661,7 @@
                 <div class="stars-container"><span>★★★★</span></div>
                 <div class="metrics-summary">
                     <div class="metric-box">
-                        <div class="metric-label">CAGR Annuel</div>
+                        <div class="metric-label">Rendement annuel composé</div>
                         <div class="metric-value positive">+33.3%</div>
                     </div>
                     <div class="metric-box">
@@ -649,11 +694,11 @@
 
             <div class="robot-card">
                 <div class="robot-name">ORION</div>
-                <div class="robot-type">L'Excellence du Momentum Intraday</div>
+                <div class="robot-type">L'Excellence du Trading Intraday</div>
                 <div class="stars-container"><span>★★★★</span></div>
                 <div class="metrics-summary">
                     <div class="metric-box">
-                        <div class="metric-label">CAGR Annuel</div>
+                        <div class="metric-label">Rendement annuel composé</div>
                         <div class="metric-value positive">+78.5%</div>
                     </div>
                     <div class="metric-box">
@@ -661,7 +706,7 @@
                         <div class="metric-value negative">31.4%</div>
                     </div>
                 </div>
-                <div style="font-size: 0.7rem; color: var(--text-dim); margin-bottom: 15px; font-style: italic;">* CAGR sur 4 ans de trading actif (mission x10)</div>
+                <div style="font-size: 0.7rem; color: var(--text-dim); margin-bottom: 15px; font-style: italic;">* rendement annuel composé sur 4 ans de trading actif (mission x10)</div>
                 <div class="power-bars">
                     <div class="bar-group">
                         <div class="bar-header"><span>Sécurité</span><span>80%</span></div>
@@ -689,19 +734,19 @@
         <!-- ===== SECTIONS DEFI ===== -->
         <div class="defi-separator">
             <h2>Documentation DeFi</h2>
-            <p>Protocole KalMydas sur Base L2 — Pools, Token, Contrats</p>
+            <p>Protocole KalMydas sur Base L2 — Pools, Jeton, Contrats</p>
         </div>
 
         <!-- POOLS -->
         <div class="defi-section">
             <h3>Les Pools de Trading</h3>
-            <p>Chaque pool est pilotée par un robot de trading algorithmique sur l'or (XAUUSD). Les rendements proviennent de vraies opérations de marché, pas de mécanismes DeFi spéculatifs.</p>
+            <p>Chaque <abbr title="Pool : réserve commune de fonds gérée par un algorithme de trading. Chaque pool a sa propre stratégie et son niveau de risque.">pool</abbr> est pilotée par un robot de <abbr title="Trading algorithmique : exécution automatique d'ordres par un programme informatique selon des règles prédéfinies, sans intervention humaine.">trading algorithmique</abbr> sur l'or (<abbr title="XAUUSD : code international désignant la paire or/dollar américain sur les marchés financiers.">XAUUSD</abbr>). Les rendements proviennent de vraies opérations de marché, pas de mécanismes <abbr title="DeFi (Finance Décentralisée) : système financier fonctionnant sur la blockchain, sans banque ni intermédiaire central.">DeFi</abbr> spéculatifs.</p>
             <div class="defi-grid">
                 <div class="defi-card">
                     <div class="card-icon">&#x1F305;</div>
                     <div class="card-title">Horizon</div>
                     <div class="card-desc">Suivi de tendance majeure — prudent et régulier</div>
-                    <div class="card-stat">APY cible : ~4% | Risque : Prudent</div>
+                    <div class="card-stat"><abbr title="APY (Annual Percentage Yield) : rendement annuel estimé en pourcentage, incluant l'effet des intérêts composés.">APY</abbr> cible : ~4% | Risque : Prudent</div>
                 </div>
                 <div class="defi-card">
                     <div class="card-icon">&#x2694;&#xFE0F;</div>
@@ -734,34 +779,34 @@
         <div class="defi-section">
             <h3>Comment participer ?</h3>
             <ul>
-                <li>Connectez-vous sur <a href="https://app.kalmydas.com" style="color: var(--kalmydas-green);">app.kalmydas.com</a> avec MetaMask ou Google</li>
-                <li>Achetez un Pass d'accès (abonnement requis pour participer)</li>
-                <li>Déposez du USDC dans la pool de votre choix</li>
+                <li>Connectez-vous sur <a href="https://app.kalmydas.com" style="color: var(--kalmydas-green);">app.kalmydas.com</a> avec <abbr title="MetaMask : portefeuille crypto sous forme d'extension navigateur qui permet de se connecter aux applications décentralisées.">MetaMask</abbr> ou Google</li>
+                <li>Achetez un <abbr title="Pass d'accès : NFT d'abonnement sur la blockchain qui sert de clé d'accès à la plateforme KalMydas.">Pass d'accès</abbr> (abonnement requis pour participer)</li>
+                <li>Déposez du <abbr title="USDC : stablecoin (monnaie stable) indexée sur le dollar américain. 1 USDC = 1 USD en principe.">USDC</abbr> dans la pool de votre choix</li>
                 <li>Vos fonds sont gérés par le robot — retirez 24h/24 quand vous voulez</li>
-                <li>Les gains sont distribués automatiquement via les smart contracts</li>
+                <li>Les gains sont distribués automatiquement via les <abbr title="Contrat intelligent : programme autonome sur la blockchain qui gère automatiquement les dépôts, retraits et calculs de frais, sans intermédiaire.">contrats intelligents</abbr></li>
             </ul>
         </div>
 
         <!-- TOKEN KAL -->
         <div class="defi-section">
-            <h3>Token KAL</h3>
-            <p>Le token utilitaire de l'écosystème KalMydas. Il sert à la gouvernance, au staking de liquidité, et comme bonus de récompense pour les déposants.</p>
+            <h3>Jeton KAL</h3>
+            <p>Le jeton utilitaire de l'écosystème KalMydas. Il sert à la gouvernance, à la fourniture de liquidité, et comme bonus de récompense pour les déposants.</p>
             <div class="defi-grid">
                 <div class="defi-card">
-                    <div class="card-title">Courbe de valorisation</div>
+                    <div class="card-title"><abbr title="Courbe de valorisation (bonding curve) : mécanisme mathématique qui fixe automatiquement le prix du KAL en fonction de l'offre et la demande.">Courbe de valorisation</abbr></div>
                     <div class="card-desc">Le prix du KAL augmente automatiquement avec la demande. Plus il y a d'acheteurs, plus le prix monte.</div>
                 </div>
                 <div class="defi-card">
-                    <div class="card-title">Récompenses LP</div>
-                    <div class="card-desc">Fournissez de la liquidité USDC/KAL sur KalSwap et gagnez des KAL en staking.</div>
+                    <div class="card-title">Récompenses <abbr title="LP (Liquidity Provider) : fournisseur de liquidité — personne qui dépose des fonds dans un échange décentralisé pour faciliter les transactions.">LP</abbr></div>
+                    <div class="card-desc">Fournissez de la <abbr title="Liquidité : fonds disponibles dans un échange pour permettre les achats et ventes. Plus il y a de liquidité, plus les échanges sont faciles.">liquidité</abbr> USDC/KAL sur <abbr title="KalSwap : échange décentralisé intégré à KalMydas pour acheter et vendre des jetons KAL.">KalSwap</abbr> et gagnez des KAL en récompenses.</div>
                 </div>
                 <div class="defi-card">
                     <div class="card-title">Distribution</div>
-                    <div class="card-desc">Les premiers utilisateurs reçoivent des KAL gratuits avec un vesting progressif (6 tranches).</div>
+                    <div class="card-desc">Les premiers utilisateurs reçoivent des KAL gratuits avec un déblocage progressif (6 tranches).</div>
                 </div>
                 <div class="defi-card">
-                    <div class="card-title">Rachat & destruction</div>
-                    <div class="card-desc">Une partie des frais de performance est utilisée pour racheter et brûler du KAL, réduisant l'offre.</div>
+                    <div class="card-title"><abbr title="Rachat et destruction (Buyback & Burn) : mécanisme qui rachète des jetons KAL sur le marché puis les détruit définitivement, réduisant l'offre totale.">Rachat & destruction</abbr></div>
+                    <div class="card-desc">Une partie des <abbr title="Frais de performance : commission prélevée uniquement sur les gains réalisés, jamais sur les pertes.">frais de performance</abbr> est utilisée pour racheter et brûler du KAL, réduisant l'offre.</div>
                 </div>
             </div>
         </div>
@@ -769,30 +814,30 @@
         <!-- ACCESS PASS -->
         <div class="defi-section">
             <h3>Pass d'accès</h3>
-            <p>Le Pass d'accès est un NFT d'abonnement qui donne accès aux pools de trading. Sans Pass d'accès actif, il est impossible de déposer dans une pool.</p>
+            <p>Le Pass d'accès est un <abbr title="NFT (jeton non fongible) : objet numérique unique sur la blockchain. Chaque NFT est unique et non interchangeable, contrairement aux cryptomonnaies classiques.">NFT</abbr> d'abonnement qui donne accès aux pools de trading. Sans Pass d'accès actif, il est impossible de déposer dans une pool.</p>
             <ul>
                 <li>Prix : 1 USDC par jour (payé en USDC)</li>
                 <li>Durée flexible : 30, 90, 180 ou 365 jours</li>
                 <li>Renouvelable à tout moment avant ou après expiration</li>
-                <li>NFT ERC-721 : vous en êtes le propriétaire sur la blockchain</li>
+                <li>NFT <abbr title="ERC-721 : standard technique sur Ethereum qui définit comment les NFT fonctionnent. Garantit que votre Pass d'accès est un vrai actif numérique que vous possédez.">ERC-721</abbr> : vous en êtes le propriétaire sur la <abbr title="Blockchain : registre numérique décentralisé et infalsifiable qui enregistre toutes les transactions de manière transparente et permanente.">blockchain</abbr></li>
             </ul>
         </div>
 
         <!-- FRAIS -->
         <div class="defi-section">
-            <h3>Frais & High-Water Mark</h3>
+            <h3>Frais & Plus-haut historique</h3>
             <ul>
                 <li><strong style="color: #fff;">Frais de gestion :</strong> ~1.2% à ~6% par an selon la pool (prélevés graduellement)</li>
                 <li><strong style="color: #fff;">Frais de performance :</strong> 10% à 20% sur les gains uniquement</li>
-                <li><strong style="color: #fff;">High-Water Mark :</strong> Les frais de performance ne sont prélevés que quand la pool dépasse son précédent record. Pas de double facturation sur les mêmes gains.</li>
+                <li><strong style="color: #fff;"><abbr title="Plus-haut historique (High-Water Mark) : le prix le plus élevé jamais atteint par la part du pool. Les frais ne sont prélevés que sur les gains au-dessus de ce niveau.">Plus-haut historique</abbr> :</strong> Les frais de performance ne sont prélevés que quand la pool dépasse son précédent record. Pas de double facturation sur les mêmes gains.</li>
                 <li><strong style="color: #fff;">Pas de frais d'entrée/sortie :</strong> Déposez et retirez sans aucun frais supplémentaire</li>
             </ul>
         </div>
 
         <!-- SMART CONTRACTS -->
         <div class="defi-section">
-            <h3>Smart Contracts (Base Sepolia Testnet)</h3>
-            <p>Tous les contrats sont déployés et vérifiables sur BaseScan. Le réseau actuel est Base Sepolia (testnet).</p>
+            <h3>Contrats intelligents (Base Sepolia Réseau de test)</h3>
+            <p>Tous les contrats sont déployés et vérifiables sur <abbr title="BaseScan : site web qui permet de consulter toutes les transactions et contrats sur la blockchain Base, en toute transparence.">BaseScan</abbr>. Le réseau actuel est <abbr title="Base Sepolia : version de test du réseau Base. Permet de tester les contrats avec de la fausse monnaie avant le lancement réel.">Base Sepolia</abbr> (réseau de test).</p>
             <div style="overflow-x: auto;">
                 <table class="contract-table">
                     <thead>
@@ -814,8 +859,8 @@
                             <td><a href="https://sepolia.basescan.org/address/0x6013FDe592b0ee6090D3F3228FB7918c2876A41F" target="_blank">0x6013...A41F</a></td>
                         </tr>
                         <tr>
-                            <td style="color: #fff; font-weight: 600;">KAL Token</td>
-                            <td>Token utilitaire</td>
+                            <td style="color: #fff; font-weight: 600;">Jeton KAL</td>
+                            <td>Jeton utilitaire</td>
                             <td><a href="https://sepolia.basescan.org/address/0x27654D8927Ee95349891B2a1f4Bc3481897c4605" target="_blank">0x2765...4605</a></td>
                         </tr>
                         <tr>
@@ -835,7 +880,7 @@
                         </tr>
                         <tr>
                             <td style="color: #fff; font-weight: 600;">KalSwap</td>
-                            <td>DEX USDC/KAL</td>
+                            <td>Échange décentralisé USDC/KAL</td>
                             <td><a href="https://sepolia.basescan.org/address/0x76c68Fb810728f3439c3edd97069d9F5766ae38f" target="_blank">0x76c6...e38f</a></td>
                         </tr>
                         <tr>
@@ -889,9 +934,9 @@
             <h3>Sécurité</h3>
             <ul>
                 <li><strong style="color: #fff;">Réseau Base L2 :</strong> Layer 2 d'Ethereum (Coinbase) — frais très bas, sécurité Ethereum</li>
-                <li><strong style="color: #fff;">Circuit Breakers :</strong> Le bot se désactive automatiquement si le gain/perte journalier dépasse un seuil</li>
-                <li><strong style="color: #fff;">Alertes Telegram :</strong> Chaque trade, chaque dépôt, chaque retrait est notifié en temps réel</li>
-                <li><strong style="color: #fff;">Contrats non-upgradable :</strong> Le code des contrats ne peut pas être modifié après déploiement</li>
+                <li><strong style="color: #fff;">Coupe-circuits :</strong> Le bot se désactive automatiquement si le gain/perte journalier dépasse un seuil</li>
+                <li><strong style="color: #fff;">Alertes Telegram :</strong> Chaque opération, chaque dépôt, chaque retrait est notifié en temps réel</li>
+                <li><strong style="color: #fff;">Contrats non-modifiables :</strong> Le code des contrats ne peut pas être modifié après déploiement</li>
                 <li><strong style="color: #fff;">Retrait libre :</strong> Vos fonds sont toujours disponibles, 24h/24, sans délai</li>
             </ul>
         </div>
@@ -911,7 +956,7 @@
                     <span>Puis-je retirer mes fonds à tout moment ?</span>
                     <span class="arrow">&#x25BC;</span>
                 </div>
-                <div class="faq-answer">Oui. Il n'y a pas de période de lock-up. Vous pouvez retirer vos fonds 24h/24, 7j/7. Le retrait est instantané via le smart contract.</div>
+                <div class="faq-answer">Oui. Il n'y a pas de période de blocage. Vous pouvez retirer vos fonds 24h/24, 7j/7. Le retrait est instantané via le contrat intelligent.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
@@ -922,10 +967,10 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                    <span>Comment fonctionne le High-Water Mark ?</span>
+                    <span>Comment fonctionne le Plus-haut historique ?</span>
                     <span class="arrow">&#x25BC;</span>
                 </div>
-                <div class="faq-answer">Le High-Water Mark garantit que les frais de performance ne sont prélevés que sur les nouveaux gains. Si la pool perd de la valeur puis remonte, les frais ne sont prélevés qu'une fois le précédent record dépassé.</div>
+                <div class="faq-answer">Le Plus-haut historique garantit que les frais de performance ne sont prélevés que sur les nouveaux gains. Si la pool perd de la valeur puis remonte, les frais ne sont prélevés qu'une fois le précédent record dépassé.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
@@ -939,7 +984,7 @@
                     <span>Sur quel réseau blockchain fonctionne KalMydas ?</span>
                     <span class="arrow">&#x25BC;</span>
                 </div>
-                <div class="faq-answer">KalMydas fonctionne sur Base, le Layer 2 d'Ethereum développé par Coinbase. Actuellement en testnet (Base Sepolia), la migration vers le mainnet est prévue prochainement.</div>
+                <div class="faq-answer">KalMydas fonctionne sur Base, le Layer 2 d'Ethereum développé par Coinbase. Actuellement en réseau de test (Base Sepolia), la migration vers le réseau principal est prévue prochainement.</div>
             </div>
         </div>
 
