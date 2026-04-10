@@ -2047,7 +2047,7 @@ window.addEventListener('load', function () {
 
 
 
- <p class="generation-date">Période d'analyse : (2020.01.01 - 2021.12.31) / H1</p>
+ <p class="generation-date" data-en="Analysis period">Période d'analyse : (2020.01.01 - 2021.12.31) / H1</p>
 
 
 
@@ -2231,7 +2231,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-label" style="font-size: 0.65rem;">Taux de Réussite</span>
+ <span class="stat-label" style="font-size: 0.65rem;" data-en="Win rate">Taux de Réussite</span>
 
 
 
@@ -2239,7 +2239,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-desc">Positions gagnées.</span>
+ <span class="stat-desc" data-en="Winning positions">Positions gagnées.</span>
 
 
 
@@ -2251,7 +2251,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-label" style="font-size: 0.65rem;">Série de Pertes</span>
+ <span class="stat-label" style="font-size: 0.65rem;" data-en="Loss streak">Série de Pertes</span>
 
 
 
@@ -2259,7 +2259,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-desc">Max d'affilée.</span>
+ <span class="stat-desc" data-en="Maximum consecutive">Max d'affilée.</span>
 
 
 
@@ -2271,7 +2271,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-label" style="font-size: 0.65rem;">Choc de Série %</span>
+ <span class="stat-label" style="font-size: 0.65rem;" data-en="Series shock %">Choc de Série %</span>
 
 
 
@@ -2311,7 +2311,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-label" style="font-size: 0.65rem;">Moyenne par opération</span>
+ <span class="stat-label" style="font-size: 0.65rem;" data-en="Average per trade">Moyenne par opération</span>
 
 
 
@@ -2319,7 +2319,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-desc">Espérance par position.</span>
+ <span class="stat-desc" data-en="Expected return per position">Espérance par position.</span>
 
 
 
@@ -2347,7 +2347,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-label" style="font-size: 0.65rem;">Ratio de Sharpe</span>
+ <span class="stat-label" style="font-size: 0.65rem;" data-en="Sharpe Ratio">Ratio de Sharpe</span>
 
 
 
@@ -2375,7 +2375,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-desc">Brut gagné / perdu.</span>
+ <span class="stat-desc" data-en="Gross P&L">Brut gagné / perdu.</span>
 
 
 
@@ -2387,7 +2387,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-label" style="font-size: 0.65rem;">Récupération</span>
+ <span class="stat-label" style="font-size: 0.65rem;" data-en="Recovery">Récupération</span>
 
 
 
@@ -2415,7 +2415,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="stat-desc">Indice de qualité.</span>
+ <span class="stat-desc" data-en="Quality index">Indice de qualité.</span>
 
 
 
@@ -2475,7 +2475,7 @@ window.addEventListener('load', function () {
 
 
 
- <h2>Méthodologie & Audit de Robustesse</h2>
+ <h2 data-en="Methodology & Robustness Audit">Méthodologie & Audit de Robustesse</h2>
 
 
 
@@ -2507,7 +2507,7 @@ window.addEventListener('load', function () {
 
 
 
- <br><small>Objectif : < 15% (Score Maximum) | Seuil de Sécurité : 60% (Score nul
+ <br><small data-en="Target">Objectif : < 15% (Score Maximum) | Seuil de Sécurité : 60% (Score nul
 
 
 
@@ -2519,11 +2519,11 @@ window.addEventListener('load', function () {
 
 
 
- <li><strong>Efficacité(30%)</strong> : Force des gains par rapport au risque (Profit Factor).
+ <li><strong data-en="Efficiency">Efficacité(30%)</strong> : Force des gains par rapport au risque (Profit Factor).
 
 
 
- <br><small>Objectif : > 2.5 | Seuil de rentabilité: 1.05.</small>
+ <br><small data-en="Target">Objectif : > 2.5 | Seuil de rentabilité: 1.05.</small>
 
 
 
@@ -2531,11 +2531,11 @@ window.addEventListener('load', function () {
 
 
 
- <li><strong>Régularité(30%)</strong> : Stabilité des gains dans le temps (Ratio de Sharpe).
+ <li><strong data-en="Consistency">Régularité(30%)</strong> : Stabilité des gains dans le temps (Ratio de Sharpe).
 
 
 
- <br><small>Objectif : > 1.5 | Seuil technique : 0.10.</small>
+ <br><small data-en="Target">Objectif : > 1.5 | Seuil technique : 0.10.</small>
 
 
 
@@ -2567,7 +2567,7 @@ window.addEventListener('load', function () {
 
 
 
- <strong>Note sur la Résilience</strong> : En période de crash historique, l'objectif n°1 est
+ <strong data-en="Resilience Note">Note sur la Résilience</strong> : En période de crash historique, l'objectif n°1 est
 
 
 
@@ -2627,7 +2627,7 @@ window.addEventListener('load', function () {
 
 
 
- <span class="badge">Historique Clé</span>
+ <span class="badge" data-en="Key History">Historique Clé</span>
 
 
 
@@ -3023,7 +3023,8 @@ window.addEventListener('load', function () {
 
 
 
- <style>.internal-nav{display:flex;justify-content:space-between;margin-top:40px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(241,196,15,0.3);border-radius:20px;backdrop-filter:blur(10px);gap:15px;font-family:sans-serif;}.nav-item{text-decoration:none;color:#fff;display:flex;flex-direction:column;gap:3px;flex:1;min-width:0;}.nav-label{font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;}.nav-title{font-weight:700;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media(max-width:600px){.internal-nav{padding:15px;gap:10px;}.nav-title{font-size:0.8rem;}}</style><nav class="internal-nav"><a href="07_FORWARD_TEST_04_KalMydas TREASURY.html" class="nav-item"><span class="nav-label">Précédent</span><span class="nav-title">TEST PROSPECTIF</span></a><a href="09_TEST_CRISE_SUBPRIMES_04_KalMydas TREASURY.html" class="nav-item" style="text-align:right;"><span class="nav-label">Suivant</span><span class="nav-title">TEST CRISE SUBPRIMES</span></a></nav></body>
+ <style>.internal-nav{display:flex;justify-content:space-between;margin-top:40px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(241,196,15,0.3);border-radius:20px;backdrop-filter:blur(10px);gap:15px;font-family:sans-serif;}.nav-item{text-decoration:none;color:#fff;display:flex;flex-direction:column;gap:3px;flex:1;min-width:0;}.nav-label{font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;}.nav-title{font-weight:700;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}@media(max-width:600px){.internal-nav{padding:15px;gap:10px;}.nav-title{font-size:0.8rem;}}</style><nav class="internal-nav"><a href="07_FORWARD_TEST_04_KalMydas TREASURY.html" class="nav-item"><span class="nav-label" data-en="Previous">Précédent</span><span class="nav-title">TEST PROSPECTIF</span></a><a href="09_TEST_CRISE_SUBPRIMES_04_KalMydas TREASURY.html" class="nav-item" style="text-align:right;"><span class="nav-label" data-en="Next">Suivant</span><span class="nav-title">TEST CRISE SUBPRIMES</span></a></nav><script src="docs-i18n.js"></script>
+</body>
 
 
 
