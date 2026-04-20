@@ -1,18 +1,99 @@
 /**
  * KalMydas Docs — i18n (FR/EN) toggle
  * Adds a floating FR/EN toggle to every docs page.
- * Shares language preference with landing & app via localStorage key 'km_lang'.
+ * Shares language preference with landing & app via:
+ *   - cookie `km_lang` on .kalmydas.com (authoritative, cross-subdomain)
+ *   - localStorage 'km_lang' (legacy + local-dev fallback)
+ *   - URL query `?lang=fr|en` (survives Safari ITP 7-day cookie cap when coming from a sibling subdomain)
  * Uses data-en attributes on elements for EN translations.
  * FR content is the default (in the HTML). EN stored in data-en attributes.
  */
 (function () {
   'use strict';
 
-  var currentLang = 'fr';
-  try {
-    var saved = localStorage.getItem('km_lang');
-    if (saved === 'en') currentLang = 'en';
-  } catch (e) {}
+  /* ─── Cross-subdomain language plumbing ─────────────────────────────────
+     Safari ITP 2.1+ caps client-set cookies (document.cookie) to 7 days
+     regardless of max-age. To survive that cap across cross-subdomain nav,
+     we also accept ?lang=fr|en as a query param, decorated on outgoing links
+     by installCrossSubdomainClickShim. A functional language cookie is
+     exempt from GDPR consent (ePrivacy art. 5.3).
+  ───────────────────────────────────────────────────────────────────────── */
+
+  function isKalmydasHost(host) {
+    return host === 'kalmydas.com' || host.endsWith('.kalmydas.com');
+  }
+
+  function readSharedCookie() {
+    var m = document.cookie.match(/(?:^|; )km_lang=([^;]+)/);
+    if (m && (m[1] === 'fr' || m[1] === 'en')) return m[1];
+    return null;
+  }
+
+  function readQueryLang() {
+    try {
+      var m = (location.search || '').match(/[?&]lang=(fr|en)\b/);
+      return m ? m[1] : null;
+    } catch (e) { return null; }
+  }
+
+  function writeSharedCookie(lang) {
+    var isKalmydas = isKalmydasHost(location.hostname);
+    var domainPart = isKalmydas ? '; domain=.kalmydas.com' : '';
+    var securePart = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = 'km_lang=' + lang + '; path=/' + domainPart + '; max-age=31536000; SameSite=Lax' + securePart;
+  }
+
+  function cleanLangFromUrl() {
+    try {
+      if (!window.history || typeof history.replaceState !== 'function') return;
+      var url = new URL(location.href);
+      if (url.searchParams.has('lang')) {
+        url.searchParams.delete('lang');
+        var newSearch = url.searchParams.toString();
+        var newUrl = url.pathname + (newSearch ? '?' + newSearch : '') + url.hash;
+        history.replaceState(null, '', newUrl);
+      }
+    } catch (e) {}
+  }
+
+  /**
+   * Detect language.
+   * Priority: 0. ?lang query · 1. shared cookie · 2. localStorage · 3. navigator.language · 4. FR
+   */
+  function detectInitialLang() {
+    var qLang = readQueryLang();
+    if (qLang) return qLang;
+    var cookieLang = readSharedCookie();
+    if (cookieLang) return cookieLang;
+    try {
+      var saved = localStorage.getItem('km_lang');
+      if (saved === 'fr' || saved === 'en') return saved;
+    } catch (e) {}
+    var browserLang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+    return browserLang.indexOf('fr') === 0 ? 'fr' : 'en';
+  }
+
+  function installCrossSubdomainClickShim(getLang) {
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented) return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var anchor = e.target && e.target.closest && e.target.closest('a[href]');
+      if (!anchor) return;
+      var href = anchor.getAttribute('href');
+      if (!href) return;
+      var url;
+      try { url = new URL(href, location.href); } catch (err) { return; }
+      if (url.hostname === location.hostname) return;
+      if (!isKalmydasHost(url.hostname)) return;
+      if (url.searchParams.has('lang')) return;
+      url.searchParams.set('lang', getLang());
+      anchor.setAttribute('href', url.toString());
+    }, true);
+  }
+
+  /* ─── i18n engine ───────────────────────────────────────────────────── */
+
+  var currentLang = detectInitialLang();
 
   // Cache FR content on first run
   var frCache = new Map();
@@ -25,6 +106,7 @@
 
   function applyLang(lang) {
     currentLang = lang;
+    writeSharedCookie(lang);
     try { localStorage.setItem('km_lang', lang); } catch (e) {}
     document.documentElement.lang = lang;
 
@@ -76,6 +158,16 @@
   function init() {
     cacheFR();
     injectToggle();
+
+    // Persist detected language to the shared cookie so siblings see it.
+    writeSharedCookie(currentLang);
+
+    // If we arrived with ?lang=XX, strip it from the URL now that it's promoted.
+    cleanLangFromUrl();
+
+    // Decorate outgoing cross-subdomain links so Safari ITP cannot desync us.
+    installCrossSubdomainClickShim(function () { return currentLang; });
+
     if (currentLang === 'en') applyLang('en');
   }
 
