@@ -1,0 +1,6 @@
+# KalMydas Docs — robots.txt
+User-agent: *
+Allow: /
+Disallow: /docs-i18n.js
+
+Sitemap: https://docs.kalmydas.com/sitemap.xml
