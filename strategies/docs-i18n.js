@@ -1,5 +1,5 @@
-/**
- * KalMydas Docs — i18n (FR/EN) toggle
+﻿/**
+ * KalMydas Docs, i18n (FR/EN) toggle
  * Adds a floating FR/EN toggle to every docs page.
  * Shares language preference with landing & app via:
  *   - cookie `km_lang` on .kalmydas.com (authoritative, cross-subdomain)
