@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /_legacy/
+Disallow: /trades.json
+Disallow: /trades.json.backup-*
+
+Sitemap: https://docs.kalmydas.com/sitemap.xml
