@@ -200,4 +200,12 @@
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
+<url>
+<loc>https://docs.kalmydas.com/reglement-quetes</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/reglement-quetes" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/reglement-quetes?lang=en" />
+<lastmod>2026-05-17T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
 </urlset>
