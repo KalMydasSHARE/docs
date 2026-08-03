@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /optest
+Disallow: /test
+
+Host: https://docs.kalmydas.com
+Sitemap: https://docs.kalmydas.com/sitemap.xml
