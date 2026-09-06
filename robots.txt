@@ -1,0 +1,11 @@
+User-Agent: *
+Allow: /
+Disallow: /optest
+Disallow: /test
+
+User-Agent: ia_archiver
+Disallow: /architecture
+Disallow: /architecture/
+
+Host: https://docs.kalmydas.com
+Sitemap: https://docs.kalmydas.com/sitemap.xml
