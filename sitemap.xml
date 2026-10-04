@@ -41,6 +41,14 @@
 <priority>0.6</priority>
 </url>
 <url>
+<loc>https://docs.kalmydas.com/messagerie/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/messagerie/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/messagerie/?lang=en" />
+<lastmod>2026-10-04T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
 <loc>https://docs.kalmydas.com/whitepaper/</loc>
 <xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/whitepaper/" />
 <xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/whitepaper/?lang=en" />
