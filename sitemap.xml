@@ -25,26 +25,34 @@
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/kal-pay/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/kal-pay/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/kal-pay/?lang=en" />
-<lastmod>2026-10-04T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/kal-move/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/kal-move/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/kal-move/?lang=en" />
-<lastmod>2026-10-04T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/pay/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/pay/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/pay/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/messagerie/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/messagerie/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/messagerie/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/move/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/move/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/move/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://docs.kalmydas.com/chat/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/chat/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/chat/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -73,58 +81,58 @@
 <priority>0.8</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/strategies/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/strategies/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/strategies/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/strategies/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/strategies/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/strategies/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/strategies/horizon/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/strategies/horizon/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/strategies/horizon/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/strategies/horizon/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/strategies/horizon/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/strategies/horizon/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/strategies/valkyrie/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/strategies/valkyrie/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/strategies/valkyrie/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/strategies/valkyrie/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/strategies/valkyrie/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/strategies/valkyrie/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/strategies/revolution/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/strategies/revolution/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/strategies/revolution/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/strategies/revolution/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/strategies/revolution/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/strategies/revolution/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/strategies/treasury/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/strategies/treasury/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/strategies/treasury/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/strategies/treasury/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/strategies/treasury/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/strategies/treasury/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/strategies/orion/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/strategies/orion/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/strategies/orion/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/strategies/orion/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/strategies/orion/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/strategies/orion/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/strategies/genesis/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/strategies/genesis/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/strategies/genesis/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/strategies/genesis/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/strategies/genesis/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/strategies/genesis/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -145,10 +153,10 @@
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/comment-ca-marche/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/comment-ca-marche/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/comment-ca-marche/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/comment-ca-marche/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/comment-ca-marche/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/comment-ca-marche/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -177,10 +185,10 @@
 <priority>0.8</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/transparency/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/transparency/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/transparency/?lang=en" />
-<lastmod>2026-07-25T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/transparency/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/transparency/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/transparency/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -217,34 +225,34 @@
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/espace-discussion-legal/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/espace-discussion-legal/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/espace-discussion-legal/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/chat/espace-discussion-legal/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/chat/espace-discussion-legal/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/chat/espace-discussion-legal/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/depot-en-kal/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/depot-en-kal/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/depot-en-kal/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/mydas/depot-en-kal/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/mydas/depot-en-kal/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/mydas/depot-en-kal/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/wallet-setup/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/wallet-setup/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/wallet-setup/?lang=en" />
-<lastmod>2026-10-05T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/pay/wallet-setup/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/pay/wallet-setup/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/pay/wallet-setup/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/bridge-usdc-base/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/bridge-usdc-base/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/bridge-usdc-base/?lang=en" />
-<lastmod>2026-07-25T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/pay/bridge-usdc-base/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/pay/bridge-usdc-base/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/pay/bridge-usdc-base/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
@@ -289,10 +297,10 @@
 <priority>0.6</priority>
 </url>
 <url>
-<loc>https://docs.kalmydas.com/reglement-quetes-avenant-chat/</loc>
-<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/reglement-quetes-avenant-chat/" />
-<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/reglement-quetes-avenant-chat/?lang=en" />
-<lastmod>2026-07-25T00:00:00.000Z</lastmod>
+<loc>https://docs.kalmydas.com/chat/reglement-quetes-avenant-chat/</loc>
+<xhtml:link rel="alternate" hreflang="fr" href="https://docs.kalmydas.com/chat/reglement-quetes-avenant-chat/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://docs.kalmydas.com/chat/reglement-quetes-avenant-chat/?lang=en" />
+<lastmod>2026-11-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
